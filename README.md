@@ -12,7 +12,7 @@ Este repositório traz o `docker-compose.yml`, um `.env.example` e o blueprint d
 - Gera logs/métricas para acompanhamento
 
 ## 🧱 Stack
-- [n8n](https://n8n.io/) (no/low-code)
+- n8n (no/low-code)
 - Docker + docker compose
 
 ## 🚀 Como subir
@@ -24,3 +24,31 @@ Este repositório traz o `docker-compose.yml`, um `.env.example` e o blueprint d
 2. Suba o serviço:
    ```bash
    docker compose up -d
+   ```
+3. Acesse o n8n em: `http://localhost:5678`
+4. Importe o fluxo: **Workflows → Import** e selecione `workflows/confirmar-pedido.json`.
+
+## 📁 Estrutura
+```
+.
+├─ docker-compose.yml
+├─ .env.example          # NÃO commitar .env real
+├─ .gitignore
+├─ README.md
+├─ workflows/
+│  └─ confirmar-pedido.json
+└─ n8n-data/             # dados locais (NÃO versionar)
+```
+
+## 🔐 Segurança
+- Nunca commitar chaves/tokens: use `.env`.
+- Defina `N8N_ENCRYPTION_KEY` para criptografar credenciais.
+- Se publicar, ajuste `N8N_HOST` e `WEBHOOK_URL` corretamente e proteja a interface do n8n.
+
+## 🧪 Teste rápido do fluxo
+- Dispare um pedido de exemplo (via webhook do n8n).
+- Veja o log de execução no painel do n8n.
+- Valide a mensagem chegando no WhatsApp de teste e a atualização de status.
+
+## 📜 Licença
+MIT — use, modifique e contribua.
